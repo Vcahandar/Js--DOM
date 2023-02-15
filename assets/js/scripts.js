@@ -151,30 +151,44 @@ let ul = document.querySelector("#products ul")
 
 btn.addEventListener("click", function () {
 
-    if (input.value == "") {
-        alert("Dont Empty")
+  if (input.value == "") {
+    alert("Dont Empty ")
 
-        return;
+    return;
+  }
+
+  let items = document.querySelectorAll("li")
+
+  for (const item of items) {
+    if (item.innerText == input.value) {
+      alert("Alredy exits")
+      return;
     }
 
-    let items=document.querySelectorAll("li")
+  }
 
-   for (const item of items) {
-     if(item.innerText==input.value){
-        alert("Alredy exits")
-        return;
-     }
-     
-   }
 
-    
-    let li = document.createElement("li")
-    li.className = "list-group-item mt-2";
-    li.innerText = input.value;
-    ul.append(li);
+  let li = document.createElement("li")
+  li.className = "list-group-item mt-2";
+  li.innerText = input.value;
+  input.value = "";
+  ul.append(li);
+
+
+  let newLi = document.querySelectorAll("#products ul li");
+  for (const item1 of newLi) {
+    item1.addEventListener("click", function () {
+      this.remove();
+    })
+
+  }
+
+
+
+
 })
 
- 
+
 
 
 
